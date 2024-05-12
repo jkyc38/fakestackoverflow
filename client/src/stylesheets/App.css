@@ -1,0 +1,646 @@
+/*Document Elements Styling*/
+/* -------------------------------------------------- */
+
+/*CSS Variables for changing between darkmode and lightmode colors*/
+:root {
+  --dark-mode-accent: #fafafa;
+  --light-mode-accent: #1f2023;
+}
+
+/*Fix default sizing for html and body */
+html {
+  height: 100%;
+  margin: 0;
+}
+
+/*Gives background-color to whole page and prevents overlap between header and other child elements */
+body {
+  margin: 0;
+  background-color: #fafafa;
+  /* display: flex; */
+  padding-top: 70px; /* Adjust as necessary */
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  color: #1f2023;
+}
+
+/* General modifier styles */
+/* -------------------------------------------------- */
+
+.dark {
+  background-color: #1f2023;
+  color: #fafafa;
+}
+
+.question__metadata {
+  color: #808080;
+}
+
+/*Header styles*/
+/* -------------------------------------------------- */
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  /* justify-content: center; Aligns x axis */
+  text-align: center;
+  align-items: center; /*Aligns y axis*/
+  border: 4px solid #0b7fdb;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom-color: #434444;
+  border-bottom-width: 2px;
+  height: 70px;
+}
+/*Styling for the title on the header*/
+.header__title {
+  margin-left: 20px;
+  font-size: x-large;
+  color: inherit;
+  height: 100%;
+  border: transparent;
+  border-radius: 5px;
+  background-color: transparent;
+}
+
+.header__title:hover {
+  background-color: gray;
+}
+
+/*Styling for the search bar*/
+.header__searchbar {
+  height: 30px;
+  flex: 1;
+  margin: 15px;
+  border: 1px solid #434444;
+  border-radius: 5px;
+}
+
+.header__user--buttons {
+  display: flex;
+  align-items: center;
+}
+.header__user--buttons > * {
+  margin: 0px;
+  margin-right: 10px;
+}
+/*Main page styling*/
+/* -------------------------------------------------- */
+
+/*Styling for the parent container of content and sidebar*/
+.main-container {
+  display: flex;
+  /*Note: if % is used instead of vh and parent element's height:'auto', then an infinite loop occurs since they both depend on each other, invalidating the property*/
+  height: calc(100vh - 71.6px);
+}
+
+.ask-questions__container {
+  display: flex;
+  width: fit-content;
+  flex-direction: column;
+  padding-right: 10px;
+}
+
+/*Sidebar Styles*/
+/* -------------------------------------------------- */
+
+/*Styling for the parent container of leftnav*/
+.sidebar {
+  position: fixed;
+  width: 200px;
+  height: 100%;
+}
+/*Styling for the left navigation page or the one with questions and tags link*/
+.sidebar__nav {
+  border-style: solid;
+  border: 2px solid #434444;
+  border-top: 0;
+  border-left: 0;
+  height: 100%;
+  padding-top: 10px;
+}
+
+/*Styling for the questions and tags button on left side*/
+.sidebar__button {
+  color: inherit;
+  background-color: transparent;
+  font-size: 20px;
+  border-radius: 5px;
+  width: 100%;
+  margin: 0px;
+  padding: 20px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar__button--highlight {
+  background-color: gray;
+  font-weight: bold;
+}
+
+.--not-highlight:hover {
+  background-color: rgba(128, 128, 128, 0.242);
+}
+
+/*Styling for the list that questions and tag is placed under*/
+.sidebar__list {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar__list--item {
+  border-radius: 5px;
+  width: 100%;
+  list-style-type: none;
+}
+
+/* Question Section styles */
+/* -------------------------------------------------- */
+
+/*Styling for the content page of the questions page or the huge chunk on the right*/
+.questions-section {
+  margin-left: 200px;
+  flex: 1; /*Size of all other elements will have as much width as their content needs, but this will have the remaining space */
+  overflow-y: auto;
+}
+
+/*Styling for header of the questions page*/
+.questions-section__header {
+  display: flex;
+  padding: 20px;
+}
+/*Styling for the inline h1 header for "All Questions"*/
+.questions-section__header-text {
+  width: 100%;
+  margin: 0;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.no-questions-text {
+  margin: 20px;
+}
+
+/*Styling for container of the number of questions and category links*/
+.questions-section__stats {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  padding: 20px;
+  padding-top: 0px;
+  border-bottom: 2px dashed #434444;
+}
+
+/*Styling for the number of questions header*/
+.questions-section__num-questions {
+  margin: 0;
+}
+
+/*Styling for all the categories newest, active, and unanswered*/
+.questions-section__cat-cont {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+/*Category links styling*/
+.category-button {
+  border: solid #403d39 1px;
+  background-color: #fafafa;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 0px;
+  color: #1f2023;
+  cursor: pointer;
+}
+
+.category-button--highlighted {
+  background-color: gray;
+}
+/*Styling for the newest category*/
+.category-button__newest {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+/*Styling for the active and unanswered category*/
+.category-button__active,
+.category-button__unanswered {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-left: 0px;
+}
+/*Styling for the active category alone*/
+.category-button__active {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.question {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  border-bottom: 2px dashed #434444;
+}
+
+.pagination-div {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.pagination__controls {
+  margin-right: 20px;
+}
+/*Question styling*/
+/* -------------------------------------------------- */
+
+.question__stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.question__info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-left: 30px;
+}
+
+.question__title {
+  color: #0b7fdb;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.question__summary {
+  padding-bottom: 10px;
+}
+
+.question__title:hover {
+  cursor: pointer;
+}
+
+.post-tag {
+  background-color: gray;
+  color: #fafafa;
+  padding: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  margin-right: 10px;
+  white-space: nowrap;
+  border: 2px solid #1f2023;
+}
+
+.question__username {
+  color: red;
+}
+
+/*Tag Section Styles*/
+/* -------------------------------------------------- */
+
+.tags-section {
+  margin-left: 200px;
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.tags-section__header {
+  display: flex;
+  font-size: x-large;
+  justify-content: space-between;
+}
+.tags-section__header > h3 {
+  margin: 0px;
+}
+
+.tags-section__all-tags-cont {
+  padding-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+
+.tag-tracker {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: dashed 2px;
+  margin: 20px;
+  width: 150px;
+  padding: 5px;
+  padding-bottom: 0px;
+}
+
+.tag-tracker__stats {
+  margin: 0px;
+  padding: 0px;
+  text-align: center;
+  font-weight: normal;
+  color: #0b7fdb;
+  text-decoration: underline;
+}
+.tag-tracker__options {
+  display: flex;
+  border-top: 2px dashed;
+  justify-content: space-between;
+  width: 100%;
+}
+.tag-tracker__name:hover {
+  cursor: pointer;
+  background-color: gray;
+}
+
+.tag-tracker__tag-amount {
+  color: inherit;
+  text-decoration: none;
+}
+
+/*Answer Page styling*/
+/* -------------------------------------------------- */
+
+.answers-page {
+  margin-left: 200px;
+  flex: 1;
+  overflow-y: auto;
+  padding: 0px 20px;
+}
+
+.answers-page__question-cont {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  border-bottom: 2px dashed #434444;
+}
+
+.answers-page__question-header {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.answers-page__question-title {
+  margin: 20px 0px 70px 20px;
+}
+
+.answers-page__question-text {
+  margin: 20px 0px 50px 20px;
+  align-self: flex-end;
+}
+
+.answers-page__stats {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.votes__num {
+  text-align: center;
+}
+.answers-page__num-answers {
+  margin: 20px 25px 50px 20px;
+}
+
+.answers-page__num-views {
+  margin: 20px 25px 50px 20px;
+}
+
+.answers-page__btn-user-info-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 20px;
+  padding-bottom: 50px;
+}
+.answers-page__askedUser {
+  display: block;
+  color: red;
+}
+.answers-page__askedDate {
+  white-space: nowrap;
+}
+
+.answer-comments__container {
+  border-bottom: 2px dashed #434444;
+  margin-bottom: 20px;
+}
+.answer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  font-weight: 100;
+  border-bottom: 2px dashed #434444;
+}
+.answer > div {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  margin-left: 10px;
+}
+
+.answer__user {
+  color: green;
+}
+
+.answers-page__stats > p {
+  font-size: large;
+  font-weight: bold;
+  color: inherit;
+  white-space: nowrap;
+}
+
+.answer__text {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.comment {
+  display: flex;
+  font-size: 13px;
+  padding: 5px;
+  border-bottom: 2px dashed #434444;
+}
+.comments-container {
+  padding: 10px;
+}
+.add-comments__cont {
+  padding: 0 40px;
+  color: gray;
+}
+.add-comment {
+  font-size: 13px;
+  cursor: pointer;
+}
+.add-comment__exit-cont {
+  width: fit-content;
+  background-color: darkgray;
+}
+.add-comment__exit {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+}
+
+.add-comment__exit:hover {
+  background-color: #808080;
+  cursor: pointer;
+}
+.comment-user {
+  margin: 0px;
+  padding: 0px 5px;
+  color: #0b7fdb;
+}
+
+.comment-date {
+  color: #808080;
+}
+
+.comments {
+  padding: 0px 40px;
+}
+
+/* Button Styling*/
+/* -------------------------------------------------- */
+
+/*Styling for the ask question button*/
+.link-button {
+  color: #fafafa;
+  border-radius: 5px;
+  white-space: nowrap;
+  box-shadow: none;
+  border: none;
+  padding: 8px;
+
+  width: fit-content;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.answer-button {
+  margin: 20px;
+  margin-right: 10px;
+  align-self: flex-end;
+  width: fit-content;
+}
+
+.post-button {
+  margin-left: 0;
+  margin-top: 10px;
+}
+
+/* Form styles */
+/* -------------------------------------------------- */
+
+/*Generic styling for forms*/
+.form-container {
+  margin-left: 200px;
+  padding: 50px;
+  padding-top: 10px;
+  position: static;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/*Styling for any general form field, width is fit-content so not all horizontal-space is occupied*/
+
+.form-field {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: fit-content;
+  height: fit-content;
+  /* margin-top: 20px; */
+  padding-bottom: 20px;
+}
+
+.form-field__header {
+  padding: 0px;
+  margin: 0px;
+}
+
+.form-field__caption {
+  font-size: small;
+  font-style: italic;
+  margin: 0px;
+  padding: 5px 0px;
+}
+.form-field__input {
+  width: 350px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  padding: 7px;
+}
+textarea.form-field__input {
+  height: 200px;
+  resize: none;
+}
+
+.form-field__error-msg {
+  color: red;
+  position: absolute;
+  bottom: 0;
+}
+
+/* Sign up form styling */
+.sign-up__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+/*Profile Styling*/
+.profile {
+  margin-left: 200px;
+  padding: 20px;
+}
+
+.profile__user-info {
+  display: flex;
+  align-items: center;
+}
+
+.profile__user-stats {
+  margin-left: 20px;
+}
+.profile__username {
+  font-size: xx-large;
+}
+.profile__acc-rep-cont {
+  display: flex;
+  align-items: center;
+}
+.profile_user-tags-questions {
+  display: flex;
+}
+.profile__questions {
+  margin-top: 10px;
+  border: 1px solid lightgray;
+}
+.profile__question-rep {
+  margin-right: 10px;
+}
+.profile__question-text {
+  flex: 1;
+  margin-left: 10px;
+}
+.profile__question-cont {
+  display: flex;
+  align-items: first baseline;
+  margin: 10px;
+}
+
+/*SVG styling*/
+body.dark .voting__svg:hover {
+  fill: #434444;
+}
+
+body:not(.dark) .voting__svg:hover {
+  fill: lightgray;
+}
